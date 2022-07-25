@@ -1,0 +1,51 @@
+# jwt configuration
+jwt:
+  signing-key: 'linasdiashdias'
+  expires-time: 604800
+  buffer-time: 86400
+  issuer: 'SolitudeAlma'
+
+# redis configuration
+jwt_redis:
+  db: 0
+  addr: '127.0.0.1:6379'
+  password: ''
+
+ws_redis:
+  db: 1
+  addr: '127.0.0.1:6379'
+  password: ''
+
+# system configuration
+system:
+  env: 'public'  # Change to "develop" to skip authentication for development mode
+  addr: 11209
+  db-type: 'mysql'
+  oss-type: 'local'    # 控制oss选择走本地还是 七牛等其他仓 自行增加其他oss仓可以在 server/utils/upload/upload.go 中 NewOss函数配置
+  use-redis: false     # 使用redis
+  use-multipoint: false
+  # IP限制次数 一个小时15000次
+  iplimit-count: 15000
+  #  IP限制一个小时
+  iplimit-time: 3600
+
+# 跨域配置
+# 需要配合 server/initialize/router.go#L32 使用
+cors:
+  mode: whitelist # 放行模式: allow-all, 放行全部; whitelist, 白名单模式, 来自白名单内域名的请求添加 cors 头; strict-whitelist 严格白名单模式, 白名单外的请求一律拒绝
+  whitelist:
+    - allow-origin: example1.com
+      allow-methods: GET, POST
+      allow-headers: content-type
+      expose-headers: Content-Length, Access-Control-Allow-Origin, Access-Control-Allow-Headers,
+        Content-Type
+      allow-credentials: true
+    - allow-origin: example2.com
+      allow-methods: GET, POST
+      allow-headers: content-type
+      expose-headers: Content-Length, Access-Control-Allow-Origin, Access-Control-Allow-Headers,
+        Content-Type
+      allow-credentials: true
+
+
+

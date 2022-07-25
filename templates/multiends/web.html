@@ -1,0 +1,21 @@
+{{define "multiends/web.html"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.acwing.com/static/jquery-ui-dist/jquery-ui.min.css">
+    <script src="https://cdn.acwing.com/static/jquery/js/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="/static/css/game.css">
+    <title>Warlock</title>
+</head>
+<body style="margin: 0">
+    <div id="ac_game_12345678" style="height: 100vh; width: 100vw"></div>
+    <script type="module">
+        import {AcGame} from "/static/js/dist/game.js";
+        $(document).ready(function() {
+            let ac_game = new AcGame("ac_game_12345678");
+        });
+    </script>
+</body>
+</html>
+{{ end }}
