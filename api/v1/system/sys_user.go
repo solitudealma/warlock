@@ -6,13 +6,12 @@
 package system
 
 import (
-	"fmt"
-	"github.com/warlock-backend/global"
-	"github.com/warlock-backend/model/common/response"
-	"github.com/warlock-backend/model/system"
-	systemReq "github.com/warlock-backend/model/system/request"
-	systemRes "github.com/warlock-backend/model/system/response"
-	"github.com/warlock-backend/utils"
+	"github.com/solitudealma/warlock/global"
+	"github.com/solitudealma/warlock/model/common/response"
+	"github.com/solitudealma/warlock/model/system"
+	systemReq "github.com/solitudealma/warlock/model/system/request"
+	systemRes "github.com/solitudealma/warlock/model/system/response"
+	"github.com/solitudealma/warlock/utils"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -28,10 +27,8 @@ type BaseApi struct{}
 // @Success 200 {object} response.Response{data=systemRes.LoginResponse,msg=string} "返回包括用户信息,token,过期时间"
 // @Router /base/login [post]
 func (b *BaseApi) Login(c *gin.Context) {
-
 	var l systemReq.Login
 	_ = c.ShouldBindQuery(&l)
-	fmt.Printf("%+v\n", l)
 	if err := utils.Verify(l, utils.LoginVerify); err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return
@@ -39,7 +36,7 @@ func (b *BaseApi) Login(c *gin.Context) {
 
 	u := &system.SysUser{Username: l.Username, Password: l.Password}
 	if user, err := userService.Login(u); err != nil {
-		fmt.Println("登陆失败! 用户名不存在或者密码错误!", err)
+		global.WlLog.Errorf("登陆失败! 用户名不存在或者密码错误!, err: %v", err)
 		response.FailWithMessage("用户名不存在或者密码错误", c)
 	} else {
 		b.TokenNext(c, *user)
@@ -51,7 +48,6 @@ func (b *BaseApi) TokenNext(c *gin.Context, user system.SysUser) {
 	j := &utils.JWT{SigningKey: []byte(global.WlConfig.JWT.SigningKey)} // 唯一签名
 	claims := j.CreateClaims(systemReq.BaseClaims{
 		UUID:     user.UUID,
-		ID:       user.ID,
 		Username: user.Username,
 	})
 	token, err := j.CreateToken(claims)

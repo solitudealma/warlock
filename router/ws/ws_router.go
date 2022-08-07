@@ -5,16 +5,18 @@
 
 package ws
 
-import "github.com/warlock-backend/server/ws"
+import (
+	"github.com/solitudealma/warlock/servers/websocket"
+)
 
 // WebsocketInit Websocket 路由
 func WebsocketInit() {
-	ws.Register("login", ws.LoginController)
-	ws.Register("create_player", ws.CreatePlayer)
-	ws.Register("move_to", ws.MoveTo)
-	ws.Register("shoot_fireball", ws.ShootFireball)
-	ws.Register("attack", ws.Attack)
-	ws.Register("blink", ws.Blink)
-	ws.Register("message", ws.Message)
-	ws.Register("heartbeat", ws.HeartbeatController)
+	websocket.Register("login", websocket.LoginController)
+	websocket.Register("create_player", websocket.CreatePlayer)
+	websocket.Register("move_to", websocket.MoveTo)
+	websocket.Register("shoot_fireball", websocket.ShootFireball)
+	websocket.Register("attack", websocket.Attack)
+	websocket.Register("blink", websocket.Blink)
+	websocket.Register("message", websocket.Message)
+	websocket.Register("heartbeat", websocket.HeartbeatController)
 }

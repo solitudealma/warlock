@@ -6,7 +6,7 @@
 package service
 
 import (
-	"github.com/warlock-backend/service/system"
+	"github.com/solitudealma/warlock/service/system"
 )
 
 type ServiceGroup struct {

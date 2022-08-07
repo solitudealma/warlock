@@ -7,7 +7,7 @@ package system
 
 import (
 	"github.com/gin-gonic/gin"
-	v1 "github.com/warlock-backend/api/v1"
+	v1 "github.com/solitudealma/warlock/api/v1"
 )
 
 type UserRouter struct{}

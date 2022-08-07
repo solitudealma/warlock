@@ -8,16 +8,15 @@ package core
 import (
 	"flag"
 	"fmt"
-	"github.com/gin-gonic/gin"
-	"github.com/warlock-backend/core/internal"
-	"os"
-	"time"
-
-	"github.com/songzhibin97/gkit/cache/local_cache"
 
 	"github.com/fsnotify/fsnotify"
+	"github.com/gin-gonic/gin"
+	"github.com/solitudealma/warlock/core/internal"
+	"github.com/solitudealma/warlock/global"
+	"github.com/songzhibin97/gkit/cache/local_cache"
 	"github.com/spf13/viper"
-	"github.com/warlock-backend/global"
+	"os"
+	"time"
 )
 
 // Viper //

@@ -8,9 +8,9 @@ package system
 import (
 	"context"
 	"fmt"
-	"github.com/warlock-backend/config"
-	"github.com/warlock-backend/global"
-	"github.com/warlock-backend/model/system"
+	"github.com/solitudealma/warlock/config"
+	"github.com/solitudealma/warlock/global"
+	"github.com/solitudealma/warlock/model/system"
 	"time"
 )
 

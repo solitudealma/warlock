@@ -10,8 +10,8 @@ import (
 	"time"
 
 	"github.com/golang-jwt/jwt/v4"
-	"github.com/warlock-backend/global"
-	"github.com/warlock-backend/model/system/request"
+	"github.com/solitudealma/warlock/global"
+	"github.com/solitudealma/warlock/model/system/request"
 )
 
 type JWT struct {

@@ -6,7 +6,7 @@
 package router
 
 import (
-	"github.com/warlock-backend/router/system"
+	"github.com/solitudealma/warlock/router/system"
 )
 
 type RouterGroup struct {

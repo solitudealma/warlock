@@ -1,7 +1,7 @@
 class MultiPlayerSocket {
     constructor(playground) {
         this.playground = playground;
-        this.ws = new WebSocket("wss://acapp.yt1209.com:4430/wss/multiplayer");
+        this.ws = new WebSocket("ws://localhost:8089/wss/multiplayer");
 
         this.start();
     }
@@ -52,7 +52,7 @@ class MultiPlayerSocket {
         }));
         // 心跳
         const heartbeat = () => {
-            //console.log("定时心跳:" + outer.username);
+            console.log("定时心跳:" + outer.username);
             this.ws.send(JSON.stringify({
                 'seq': outer.uuid + "-heartbeat",
                 'event': "heartbeat",

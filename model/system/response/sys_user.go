@@ -6,7 +6,7 @@
 package response
 
 import (
-	"github.com/warlock-backend/model/system"
+	"github.com/solitudealma/warlock/model/system"
 )
 
 type SysUserResponse struct {

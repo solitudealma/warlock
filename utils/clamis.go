@@ -7,8 +7,8 @@ package utils
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/warlock-backend/global"
-	systemReq "github.com/warlock-backend/model/system/request"
+	"github.com/solitudealma/warlock/global"
+	systemReq "github.com/solitudealma/warlock/model/system/request"
 )
 
 func GetClaims(c *gin.Context) (*systemReq.CustomClaims, error) {

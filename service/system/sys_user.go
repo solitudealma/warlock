@@ -9,13 +9,14 @@ import (
 	"crypto/rand"
 	"errors"
 	"fmt"
+	"github.com/solitudealma/warlock/global"
 	"math/big"
 	"time"
 
 	uuid "github.com/satori/go.uuid"
-	"github.com/warlock-backend/config"
-	"github.com/warlock-backend/model/system"
-	"github.com/warlock-backend/utils"
+	"github.com/solitudealma/warlock/config"
+	"github.com/solitudealma/warlock/model/system"
+	"github.com/solitudealma/warlock/utils"
 )
 
 //@function: Register
@@ -57,8 +58,7 @@ func (userService *UserService) Register(u system.SysUser) (userInter system.Sys
 func (userService *UserService) Login(u *system.SysUser) (userInter *system.SysUser, err error) {
 
 	var user system.SysUser
-	querySql := "SELECT id, created_at, updated_at, uuid, username, password, " +
-		"avatar FROM sys_users where username = ?"
+	querySql := "SELECT uuid, username, password, avatar FROM sys_users where username = ?"
 	err = config.MasterDB.Get(&user, querySql, u.Username)
 	if err == nil {
 		if ok := utils.BcryptCheck(u.Password, user.Password); !ok {
@@ -76,12 +76,27 @@ func (userService *UserService) Login(u *system.SysUser) (userInter *system.SysU
 
 func (userService *UserService) GetUserInfo(username string) (user system.SysUser, err error) {
 	var reqUser system.SysUser
-	querySql := "SELECT `id`, `created_at`, `updated_at`, `uuid`, `username`, `avatar`" +
-		"FROM `sys_users` where `username` = ?"
+	querySql := "SELECT `uuid`, `username`, `avatar`, `score` FROM `sys_users` where `username` = ?"
 	err = config.MasterDB.Get(&reqUser, querySql, username)
 	if err != nil {
 		fmt.Printf("%+v\n", err)
 		return system.SysUser{}, err
 	}
 	return reqUser, err
+}
+
+func (userService *UserService) UpdateUserScore(username string, score int32) (err error) {
+	querySql := "UPDATE sys_users set score = score +  ? where `username` = ?"
+	res, err := config.MasterDB.Exec(querySql, score, username)
+	if err != nil {
+		fmt.Printf("%+v\n", err)
+		return err
+	}
+	affected, err := res.RowsAffected()
+	if err != nil {
+		fmt.Printf("%+v\n", err)
+		return err
+	}
+	global.WlLog.Infof("update score %d row", affected)
+	return nil
 }

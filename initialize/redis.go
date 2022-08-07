@@ -8,7 +8,7 @@ package initialize
 import (
 	"context"
 
-	"github.com/warlock-backend/global"
+	"github.com/solitudealma/warlock/global"
 
 	"github.com/go-redis/redis/v8"
 )
@@ -22,7 +22,7 @@ func JWTRedis() {
 	})
 	pong, err := client.Ping(context.Background()).Result()
 	if err != nil {
-		global.WlLog.Errorf("redis connect ping failed, err:", err)
+		global.WlLog.Errorf("redis connect ping failed, err:%v", err)
 	} else {
 		global.WlLog.Infof("redis connect ping response: %s", pong)
 		global.WlJWTRedis = client

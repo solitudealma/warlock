@@ -6,7 +6,7 @@
 package v1
 
 import (
-	"github.com/warlock-backend/api/v1/system"
+	"github.com/solitudealma/warlock/api/v1/system"
 )
 
 type ApiGroup struct {

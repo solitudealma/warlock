@@ -7,7 +7,7 @@ package core
 
 import (
 	"github.com/sirupsen/logrus"
-	"github.com/warlock-backend/core/internal"
+	"github.com/solitudealma/warlock/core/internal"
 	"os"
 )
 

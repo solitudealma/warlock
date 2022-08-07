@@ -14,8 +14,8 @@ type Request struct {
 	Data  interface{} `json:"data,omitempty"` // 数据 json
 }
 
-// Login 登录请求数据
-type Login struct {
+// PlayerLogin 登录请求数据
+type PlayerLogin struct {
 	ServiceToken string `json:"serviceToken"` // 验证用户是否登录
 	AppId        uint32 `json:"appId"`
 	UserId       string `json:"userId"`
@@ -28,11 +28,21 @@ type HeartBeat struct {
 	UserId string `json:"userId,omitempty"`
 }
 
+type Player struct {
+	Uuid        string `json:"uuid"`
+	Username    string `json:"username"`
+	Photo       string `json:"photo"`
+	Score       uint32 `json:"score,omitempty"`
+	Hp          uint32 `json:"hp"`
+	WaitingTime uint32 `json:"waiting_time,omitempty"`
+}
+
 type CreatePlayer struct {
 	AppId    uint32 `json:"appId"`
 	UUid     string `json:"uuid"`
 	Username string `json:"username"`
 	Photo    string `json:"photo"`
+	Hp       uint32 `json:"hp"`
 }
 
 type MoveTo struct {

@@ -10,8 +10,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/go-redis/redis/v8"
-	"github.com/warlock-backend/global"
-	"github.com/warlock-backend/model/ws"
+	"github.com/solitudealma/warlock/global"
+	"github.com/solitudealma/warlock/model/ws"
 )
 
 const (
@@ -22,10 +22,6 @@ const (
 )
 
 type WSService struct{}
-
-func (wsService *WSService) MultiPlayer() {
-
-}
 
 /*********************  查询用户是否在线  ************************/
 func getUserOnlineKey(userKey string) (key string) {

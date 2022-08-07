@@ -5,8 +5,6 @@
 
 package ws
 
-import "github.com/warlock-backend/model/common"
-
 const (
 	messageTypeText = "text"
 
@@ -60,13 +58,13 @@ func NewCreatePlayerMsg(uuid string, username string, photo string) (message *Cr
 
 func getCreatePlayerMsgData(event, uuId, username, photo, msgId string) string {
 	textMsg := NewCreatePlayerMsg(uuId, username, photo)
-	head := common.NewResponseHead(msgId, event, OK, "success", textMsg)
+	head := NewResponseHead(msgId, event, OK, "success", textMsg)
 	return head.String()
 }
 
 func getTextMsgData(event, uuId, msgId, message string) string {
 	textMsg := NewTestMsg(uuId, message)
-	head := common.NewResponseHead(msgId, event, OK, "Ok", textMsg)
+	head := NewResponseHead(msgId, event, OK, "Ok", textMsg)
 	return head.String()
 }
 
@@ -93,9 +91,9 @@ func GetTextMsgDataExit(uuId, msgId, message string) string {
 }
 
 // GetErrorMessage 根据错误码 获取错误信息
-func GetErrorMessage(code int, message string) string {
+func GetErrorMessage(code uint32, message string) string {
 	var codeMessage string
-	codeMap := map[int]string{
+	codeMap := map[uint32]string{
 		OK:                 "success",
 		NotLoggedIn:        "未登录",
 		ParameterIllegal:   "参数不合法",

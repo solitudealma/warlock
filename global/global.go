@@ -8,9 +8,9 @@ package global
 import (
 	"github.com/go-redis/redis/v8"
 	"github.com/sirupsen/logrus"
+	"github.com/solitudealma/warlock/config"
 	"github.com/songzhibin97/gkit/cache/local_cache"
 	"github.com/spf13/viper"
-	"github.com/warlock-backend/config"
 	"golang.org/x/sync/singleflight"
 )
 

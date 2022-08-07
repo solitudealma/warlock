@@ -7,8 +7,8 @@ package middleware
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/warlock-backend/config"
-	"github.com/warlock-backend/global"
+	"github.com/solitudealma/warlock/config"
+	"github.com/solitudealma/warlock/global"
 	"net/http"
 )
 

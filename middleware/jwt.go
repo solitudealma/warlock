@@ -7,14 +7,14 @@ package middleware
 
 import (
 	"github.com/golang-jwt/jwt/v4"
-	"github.com/warlock-backend/utils"
+	"github.com/solitudealma/warlock/utils"
 	"strconv"
 	"time"
 
-	"github.com/warlock-backend/global"
-	"github.com/warlock-backend/model/common/response"
-	"github.com/warlock-backend/model/system"
-	"github.com/warlock-backend/service"
+	"github.com/solitudealma/warlock/global"
+	"github.com/solitudealma/warlock/model/common/response"
+	"github.com/solitudealma/warlock/model/system"
+	"github.com/solitudealma/warlock/service"
 
 	"github.com/gin-gonic/gin"
 )

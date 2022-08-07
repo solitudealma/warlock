@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option  go_package = "github.com/solitudealma/warlock/protobuf";
+
+package protobuf;
+
+service MatchService {
+  rpc AddPlayer (MatchUserInfoReq) returns (MatchUserInfoRes);
+}
+
+message MatchUserInfoReq {
+  uint32 appId = 1;
+  uint32 score = 2;
+  string uuid = 3;
+  string username = 4;
+  string photo = 5;
+}
+
+message MatchUserInfoRes {
+  uint32 retCode = 1;
+  string errMsg = 2;
+}

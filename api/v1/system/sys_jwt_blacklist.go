@@ -7,9 +7,9 @@ package system
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/warlock-backend/global"
-	"github.com/warlock-backend/model/common/response"
-	"github.com/warlock-backend/model/system"
+	"github.com/solitudealma/warlock/global"
+	"github.com/solitudealma/warlock/model/common/response"
+	"github.com/solitudealma/warlock/model/system"
 )
 
 type JwtApi struct{}

@@ -6,17 +6,15 @@
 package system
 
 import (
-	"github.com/warlock-backend/service"
+	"github.com/solitudealma/warlock/service"
 )
 
 type ApiGroup struct {
 	JwtApi
 	BaseApi
-	WSApi
 }
 
 var (
 	jwtService  = service.ServiceGroupApp.SystemServiceGroup.JwtService
 	userService = service.ServiceGroupApp.SystemServiceGroup.UserService
-	wsService   = service.ServiceGroupApp.SystemServiceGroup.WSService
 )

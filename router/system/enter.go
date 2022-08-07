@@ -8,6 +8,5 @@ package system
 type RouterGroup struct {
 	JwtRouter
 	BaseRouter
-	WSRouter
 	UserRouter
 }

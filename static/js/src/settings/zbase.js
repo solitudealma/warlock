@@ -201,6 +201,7 @@ class Settings {
                 password_confirm: password_confirm,
             },
             success: function(res) {
+                console.log(res)
                 if(res.msg === "注册成功") {
                     location.reload(); // 刷新页面
                 } else {
